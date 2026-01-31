@@ -1,0 +1,125 @@
+/* =========================
+   Global Page Styling
+   ========================= */
+
+body {
+  background-color: #f8f9fa; /* soft neutral background */
+}
+
+/* =========================
+   Card Styling
+   ========================= */
+
+.card {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   Section Headings
+   ========================= */
+
+h1 {
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+/* =========================
+   Why Choose Us 6 Items
+   ========================= */
+
+.why-card {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.why-card h5 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.why-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   Table Styling
+   ========================= */
+
+.table th {
+  vertical-align: middle;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+/* =========================
+   Form Feedback
+   ========================= */
+
+.alert {
+  border-radius: 0.4rem;
+}
+
+/* =========================
+   Why Choose Us – Mobile UX
+   ========================= */
+
+/* Base card style */
+.why-card {
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Improve spacing & readability on small screens */
+@media (max-width: 576px) {
+  .why-card {
+    padding: 1.5rem !important;
+    margin-bottom: 1rem;
+  }
+
+  .why-card h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .why-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+/* Hover effect for larger screens */
+@media (min-width: 577px) {
+  .why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  }
+} 
+/* Improve contrast for inactive category buttons */
+.btn-outline-warning {
+  color: #856404;
+  border-color: #856404;
+}
+
+.btn-outline-info {
+  color: #055160;
+  border-color: #055160;
+}
+
+/* =========================
+   End of File
+   ========================= */
+

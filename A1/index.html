@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+
+    <!-- Local Bootstrap -->
+    <link rel="stylesheet" href="../framework/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../framework/css/style.css">
+    
+  </head>
+
+  <body>
+    <div id="app" class="container mt-4">
+      <!-- ===================== -->
+      <!-- Events Table Section -->
+      <!-- ===================== -->
+
+      <h1 class="text-primary mb-4">{{ title }}</h1>
+
+      <!-- Event Management Image -->
+      <img
+        src="images/event_management.jpg"
+        alt="People attending a professional event"
+        class="img-fluid rounded mb-5"
+      />
+
+      <!-- ===================== -->
+      <!-- SECTION 1: Why Choose Us -->
+      <!-- ===================== -->
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="mb-3">Why Choose Us</h2>
+
+          <div class="row g-4">
+            <!-- Item 1 -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="why-card p-3 border rounded h-100 text-center">
+
+
+                <h5>Efficient Event Planning</h5>
+                <p class="mb-0">
+                  We specialize in organizing events that run smoothly and
+                  efficiently.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="why-card p-3 border rounded h-100 text-center">
+                <h5>Expert Team</h5>
+                <p class="mb-0">
+                  Our team of professionals ensures seamless event execution
+                  from start to finish.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="why-card p-3 border rounded h-100 text-center">
+                <h5>Cost Effective Solutions</h5>
+                <p class="mb-0">
+                  We offer competitive pricing without compromising on quality.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="why-card p-3 border rounded h-100 text-center">
+                <h5>On Time Execution</h5>
+                <p class="mb-0">
+                  We pride ourselves on delivering events on schedule without
+                  delays.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="why-card p-3 border rounded h-100 text-center">
+                <h5>High Customer Satisfaction</h5>
+                <p class="mb-0">
+                  Our clients consistently rate us highly for our dedication and
+                  service quality.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="why-card p-3 border rounded h-100 text-center">
+                <h5>Strong Communication</h5>
+                <p class="mb-0">
+                  We maintain clear and open communication with our clients
+                  throughout the event planning process.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== -->
+      <!-- SECTION 2: Event Information -->
+      <!-- ===================== -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="mb-3">Event Information</h2>
+
+          <!-- Search Inputs -->
+          <div class="row mb-3">
+            <div class="col-md-4">
+            <label for="searchId" class="form-label">Event ID</label>
+              <input
+                type="text"
+                id="searchId"
+                class="form-control"
+                v-model="searchId"
+                placeholder="e.g. EVT10001"
+              />
+
+
+            <div class="col-md-4">
+            <label for="searchName" class="form-label">Event Name</label>
+              <input
+                type="text"
+                id="searchName"
+                class="form-control"
+                v-model="searchName"
+                placeholder="e.g. AI"
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label for="searchDuration" class="form-label">Duration (hours)</label>
+              <input
+                type="number"
+                id="searchDuration"
+                class="form-control"
+                v-model="searchDuration"
+                placeholder="e.g. 6"
+              />
+            </div>
+          </div>
+
+          <!-- Category Filter -->
+          <fieldset class="mb-3">
+            <legend class="form-label">Category</legend>
+
+              <div class="d-flex flex-column flex-md-row gap-2" role="radiogroup" aria-label="Category filter">
+            
+                <input type="radio" class="btn-check" name="tableCategory" id="catAll"
+                  value="All" v-model="selectedCategory" autocomplete="off" checked>
+                <label class="btn btn-outline-secondary" for="catAll">All</label>
+
+                <input type="radio" class="btn-check" name="tableCategory" id="catTech"
+                  value="Technology" v-model="selectedCategory" autocomplete="off">
+                <label class="btn btn-outline-primary" for="catTech">Technology</label>
+
+                <input type="radio" class="btn-check" name="tableCategory" id="catBusiness"
+                  value="Business" v-model="selectedCategory" autocomplete="off">
+                <label class="btn btn-outline-danger" for="catBusiness">Business</label>
+
+                <input type="radio" class="btn-check" name="tableCategory" id="catMarketing"
+                  value="Marketing" v-model="selectedCategory" autocomplete="off">
+                <label class="btn btn-outline-warning" for="catMarketing">Marketing</label>
+
+                <input type="radio" class="btn-check" name="tableCategory" id="catFinance"
+                  value="Finance" v-model="selectedCategory" autocomplete="off">
+                <label class="btn btn-outline-info" for="catFinance">Finance</label>
+
+              </div>
+          </fieldset> 
+
+
+          <!-- Events Table -->
+          <table class="table table-bordered table-striped table-hover">
+            <thead class="table-dark text-center">
+              <tr>
+                <th scope="col">Event ID</th>
+                <th scope="col">Event Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Duration (hours)</th>
+              </tr>
+            </thead>
+            
+            <tbody class="text-center">
+              <tr v-for="event in paginatedEvents" :key="event.eventid">
+
+                <!-- Event ID -->
+                <td>{{ event.eventid }}</td>
+
+                <!-- Event Name -->
+                <td>{{ event.eventname }}</td>
+
+                <!-- Category (badge) -->
+                <td>
+                  <span
+                    class="badge"
+                    :class="categoryBadgeClass(event.category)"
+                  >
+                    {{ event.category }}
+                  </span>
+                </td>
+
+                <!-- Duration -->
+                <td>{{ event.durationhour }}</td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+
+      <nav aria-label="Event table pagination">
+        <ul class="pagination justify-content-center mt-3">
+
+          <!-- Previous -->
+          <li class="page-item" :class="{ disabled: currentPage === 1 }">
+            <button
+              class="page-link"
+              @click="currentPage--"
+              :disabled="currentPage === 1"
+            >
+              Previous
+            </button>
+          </li>
+
+          <!-- Page numbers -->
+          <li
+            class="page-item"
+            v-for="page in totalPages"
+            :key="page"
+            :class="{ active: currentPage === page }"
+          >
+            <button
+              class="page-link"
+              @click="currentPage = page"
+            >
+              {{ page }}
+            </button>
+          </li>
+
+          <!-- Next -->
+          <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+            <button
+              class="page-link"
+              @click="currentPage++"
+              :disabled="currentPage === totalPages"
+            >
+              Next
+            </button>
+          </li>
+
+        </ul>
+      </nav>
+
+
+     
+
+      <!-- ===================== -->
+      <!-- SECTION 3: Registration Form -->
+      <!-- ===================== -->
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="mb-3">Event Registration</h2>
+
+        <form @submit.prevent="submitForm">
+          <!-- Username -->
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              v-model="registration.username"
+              required
+            />
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              v-model="registration.password"
+            />
+
+            <small
+              v-if="passwordTooShort"
+              class="text-danger"
+              role="alert"
+            >
+              Password must be at least 8 characters
+            </small>
+
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              class="form-control"
+              v-model="registration.confirmPassword"
+            />
+
+            <small
+              v-if="passwordsDoNotMatch && registration.confirmPassword"
+              class="text-danger"
+              role="alert"
+            >
+              Passwords do not match
+            </small>
+          </div>
+
+          <!-- Registration Category -->
+          <fieldset class="mb-3">
+            <legend class="col-form-label">Event Category</legend>
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="regCategory"
+                value="Business"
+                v-model="registration.category"
+                id="regBusiness"
+              />
+              <label class="form-check-label" for="regBusiness">
+                Business
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="regCategory"
+                value="Technology"
+                v-model="registration.category"
+                id="regTechnology"
+              />
+              <label class="form-check-label" for="regTechnology">
+                Technology
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="regCategory"
+                value="Marketing"
+                v-model="registration.category"
+                id="regMarketing"
+              />
+              <label class="form-check-label" for="regMarketing">
+                Marketing
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="regCategory"
+                value="Finance"
+                v-model="registration.category"
+                id="regFinance"
+              />
+              <label class="form-check-label" for="regFinance">
+                Finance
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Event Name Dropdown -->
+          <div class="mb-3">
+            <label for="eventname" class="form-label">Event Name</label>
+            <select
+              id="eventname"
+              class="form-select"
+              v-model="registration.eventid"
+              required
+            >
+              <option disabled value="">Please select an event</option>
+              <option
+                v-for="event in registrationEvents"
+                :key="event.eventid"
+                :value="event.eventid"
+              >
+                {{ event.eventname }}
+              </option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Register
+          </button>
+        </form>
+
+        <div v-if="errorMessage" class="alert alert-danger mt-3">
+          {{ errorMessage }}
+        </div>
+
+        <div v-if="summaryMessage" class="alert alert-success mt-3">
+          {{ summaryMessage }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Local Vue -->
+    <script src="../framework/js/vue.global.js"></script>
+    <script src="../framework/js/app.js"></script>
+  </body>
+</html>
